@@ -67,7 +67,7 @@ func (gs *GopherState) UnmarshalJSON(b []byte) error {
 	return metaGopherState.UnmarshalJSONHelper(b, gs)
 }
 
-func Example() {
+func Example_int() {
 	// Convert to / from strings
 	// Using a valid constant value.
 	happyGopher := GopherJokingAboutJS

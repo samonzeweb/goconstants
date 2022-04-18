@@ -12,7 +12,7 @@ import (
 //
 // Strings and JSONStrings allows to separated user facing and encoding strings,
 // at least one of them must be set.
-type Metadata[T ~int] struct {
+type Metadata[T comparable] struct {
 	// Name of the constant type (used for error messages)
 	Name string
 	// Strings allow the mapping between a constant value and its string
@@ -93,7 +93,7 @@ func (meta Metadata[T]) toStringHelper(v T, strings map[T]string) (string, error
 		return s, nil
 	}
 
-	return "", fmt.Errorf("invalid %s value: %d", meta.Name, v)
+	return "", fmt.Errorf("invalid %s value: %#v", meta.Name, v)
 }
 
 // fromStringHelper converts a string to its associated constant value, and a
